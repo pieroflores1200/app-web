@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Vendedor | Plásticos Nacionales S.A.</title>
+  <meta name="description" content="Herramientas comerciales para el equipo de vendedores de Plásticos Nacionales S.A.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="bloqueado">
+
+  <!-- ============================================================
+       PANTALLA DE ACCESO CON CONTRASEÑA
+       ------------------------------------------------------------
+       Se muestra mientras el <body> tenga la clase "bloqueado".
+       El formulario lo controla js/acceso-vendedor.js
+       👉 Para cambiar la contraseña, edita ese archivo (no este HTML).
+       ============================================================ -->
+  <div class="candado" id="candado">
+    <div class="candado__caja">
+      <img src="img/logo.png" alt="Logo Plásticos Nacionales" class="candado__logo">
+      <div class="candado__icono"><i class="fa-solid fa-lock"></i></div>
+      <h2>Acceso Vendedores</h2>
+      <p>Ingresa la contraseña para entrar al portal del vendedor.</p>
+      <form id="formCandado" class="candado__form" autocomplete="off">
+        <input
+          type="password"
+          id="passwordInput"
+          class="candado__input"
+          placeholder="Contraseña"
+          required
+          autofocus>
+        <button type="submit" class="candado__boton">Ingresar</button>
+      </form>
+      <p class="candado__error" id="candadoError" hidden>Contraseña incorrecta. Intenta de nuevo.</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       BARRA SUPERIOR
+       Igual en las 3 páginas: logo + nombre + selector de portal
+       + botón Inicio.
+       👉 Para cambiar el logo, edita img/logo.png
+       ============================================================ -->
+  <header class="navbar">
+    <a href="index.html" class="navbar__marca">
+      <img src="img/logo.png" alt="Logo Plásticos Nacionales" class="navbar__logo">
+      <span class="navbar__nombre">Plásticos <span>Nacionales</span></span>
+    </a>
+
+    <!-- Selector rápido para saltar entre el portal de Vendedor y el de Cliente -->
+    <nav class="navbar__tabs" aria-label="Cambiar de portal">
+      <a href="vendedor.html" class="navbar__tab activo">
+        <i class="fa-solid fa-user-tie"></i><span> Vendedor</span>
+      </a>
+      <a href="cliente.html" class="navbar__tab">
+        <i class="fa-solid fa-users"></i><span> Cliente</span>
+      </a>
+    </nav>
+
+    <a href="index.html" class="btn-inicio">
+      <i class="fa-solid fa-house"></i>
+      <span>Inicio</span>
+    </a>
+  </header>
+  <div class="ola-decorativa" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       CONTENIDO: MENÚ DEL VENDEDOR
+       ============================================================ -->
+  <main class="contenido">
+
+    <div class="contenido__encabezado">
+      <h1><i class="fa-solid fa-user-tie" style="color:var(--verde-corporativo); margin-right:10px;"></i>Portal del Vendedor</h1>
+      <p>Selecciona una herramienta para comenzar. Cada tarjeta abre un formulario.</p>
+    </div>
+
+    <!-- ============================================================
+         TARJETAS DEL VENDEDOR
+         ------------------------------------------------------------
+         👉 CÓMO CAMBIAR LOS ENLACES DE GOOGLE FORMS:
+         Reemplaza el valor de href="" en cada <a class="tarjeta">
+         por el enlace real de tu formulario de Google.
+
+         👉 CÓMO AGREGAR O QUITAR UNA TARJETA:
+         Copia o elimina un bloque <a class="tarjeta">...</a> completo.
+
+         👉 CÓMO CAMBIAR EL ÍCONO:
+         Cambia la clase del <i> (usa cualquier ícono de Font Awesome,
+         ver: https://fontawesome.com/search)
+         ============================================================ -->
+    <div class="grid-tarjetas">
+
+      <a href="https://forms.google.com/" target="_blank" rel="noopener noreferrer" class="tarjeta">
+        <div class="tarjeta__icono"><i class="fa-solid fa-map-location-dot"></i></div>
+        <h3 class="tarjeta__titulo">Registrar visita</h3>
+        <p class="tarjeta__desc">Documenta tu visita a cliente con fecha, ubicación y notas.</p>
+        <span class="tarjeta__enlace">Abrir formulario <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="https://forms.google.com/" target="_blank" rel="noopener noreferrer" class="tarjeta">
+        <div class="tarjeta__icono"><i class="fa-solid fa-flask-vial"></i></div>
+        <h3 class="tarjeta__titulo">Solicitud de muestras</h3>
+        <p class="tarjeta__desc">Solicita muestras de producto para tus clientes.</p>
+        <span class="tarjeta__enlace">Abrir formulario <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="https://forms.google.com/" target="_blank" rel="noopener noreferrer" class="tarjeta">
+        <div class="tarjeta__icono"><i class="fa-solid fa-chart-line"></i></div>
+        <h3 class="tarjeta__titulo">Reporte diario</h3>
+        <p class="tarjeta__desc">Registra tus actividades y resultados del día.</p>
+        <span class="tarjeta__enlace">Abrir formulario <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="https://forms.google.com/" target="_blank" rel="noopener noreferrer" class="tarjeta">
+        <div class="tarjeta__icono"><i class="fa-solid fa-square-poll-vertical"></i></div>
+        <h3 class="tarjeta__titulo">Encuesta</h3>
+        <p class="tarjeta__desc">Comparte la encuesta de satisfacción con tu cliente.</p>
+        <span class="tarjeta__enlace">Abrir formulario <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="https://forms.google.com/" target="_blank" rel="noopener noreferrer" class="tarjeta">
+        <div class="tarjeta__icono"><i class="fa-solid fa-box-open"></i></div>
+        <h3 class="tarjeta__titulo">Pedidos</h3>
+        <p class="tarjeta__desc">Levanta un nuevo pedido para procesarlo con producción.</p>
+        <span class="tarjeta__enlace">Abrir formulario <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="https://forms.google.com/" target="_blank" rel="noopener noreferrer" class="tarjeta">
+        <div class="tarjeta__icono"><i class="fa-solid fa-user-plus"></i></div>
+        <h3 class="tarjeta__titulo">Clientes nuevos</h3>
+        <p class="tarjeta__desc">Registra los datos de un cliente potencial nuevo.</p>
+        <span class="tarjeta__enlace">Abrir formulario <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="https://forms.google.com/" target="_blank" rel="noopener noreferrer" class="tarjeta">
+        <div class="tarjeta__icono"><i class="fa-solid fa-list-check"></i></div>
+        <h3 class="tarjeta__titulo">Seguimiento</h3>
+        <p class="tarjeta__desc">Da seguimiento a negociaciones y pedidos en curso.</p>
+        <span class="tarjeta__enlace">Abrir formulario <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <strong>Plásticos Nacionales S.A.</strong> — Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/acceso-vendedor.js"></script>
+</body>
+</html>

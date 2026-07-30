@@ -1,0 +1,722 @@
+/* ============================================================
+   ESTILOS.CSS
+   Plásticos Nacionales S.A. — Hoja de estilos principal
+   ============================================================
+   Este archivo controla el diseño visual de TODO el sitio:
+   index.html, vendedor.html y cliente.html.
+
+   ORGANIZACIÓN DE ESTE ARCHIVO:
+   1. Variables de color y tipografía (fácil edición)
+   2. Reset y estilos base
+   3. Barra superior (navbar)
+   4. Pantalla principal (index)
+   5. Tarjetas de menú (vendedor / cliente)
+   6. Pie de página (footer)
+   7. Animaciones
+   8. Responsive (tablet y celular)
+   ============================================================ */
+
+
+/* ============================================================
+   1. VARIABLES GLOBALES
+   ------------------------------------------------------------
+   👉 PARA CAMBIAR LOS COLORES DE TODO EL SITIO, edita solo
+   los valores aquí abajo. Se aplican automáticamente en
+   todas las páginas.
+   ============================================================ */
+:root {
+  /* Colores corporativos (tomados del logo) */
+  --azul-corporativo: #0B3A74;
+  --azul-oscuro: #082B57;
+  --verde-corporativo: #2DA44E;
+  --verde-oscuro: #23883E;
+
+  /* Colores de apoyo */
+  --blanco: #FFFFFF;
+  --gris-fondo: #F6F8FA;      /* fondo suave alterno */
+  --gris-texto: #5B6672;      /* texto secundario */
+  --gris-borde: #E6EAEF;      /* bordes sutiles */
+  --texto-principal: #14213D;
+
+  /* Sombras suaves (estilo Apple / Stripe) */
+  --sombra-suave: 0 2px 8px rgba(11, 58, 116, 0.06);
+  --sombra-media: 0 12px 32px rgba(11, 58, 116, 0.12);
+  --sombra-hover: 0 20px 40px rgba(11, 58, 116, 0.16);
+
+  /* Bordes redondeados */
+  --radio-chico: 12px;
+  --radio-medio: 18px;
+  --radio-grande: 28px;
+
+  /* Tipografía
+     👉 Cambia aquí si prefieres usar Montserrat en vez de Poppins
+     (recuerda actualizar también el <link> de Google Fonts en el <head>). */
+  --fuente-titulos: 'Montserrat', sans-serif;
+  --fuente-texto: 'Poppins', sans-serif;
+
+  /* Transiciones */
+  --transicion-suave: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* ============================================================
+   2. RESET Y ESTILOS BASE
+   ============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fuente-texto);
+  color: var(--texto-principal);
+  background-color: var(--blanco);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  color: var(--azul-corporativo);
+  letter-spacing: -0.02em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+
+/* Foco visible para accesibilidad con teclado */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--verde-corporativo);
+  outline-offset: 3px;
+  border-radius: var(--radio-chico);
+}
+
+/* Respeta la preferencia de "reducir movimiento" del sistema operativo */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ============================================================
+   3. BARRA SUPERIOR (NAVBAR)
+   ------------------------------------------------------------
+   Aparece en vendedor.html y cliente.html.
+   Contiene: logo pequeño + nombre de la empresa + botón Inicio.
+   ============================================================ */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 6%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--gris-borde);
+}
+
+.navbar__marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar__logo {
+  height: 38px;
+  width: auto;
+  border-radius: 6px;
+}
+
+.navbar__nombre {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--azul-corporativo);
+  white-space: nowrap;
+}
+
+.navbar__nombre span {
+  color: var(--verde-corporativo);
+}
+
+/* Botón "Inicio" de la barra superior */
+.btn-inicio {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--azul-corporativo);
+  color: var(--blanco);
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: transform var(--transicion-suave), background var(--transicion-suave), box-shadow var(--transicion-suave);
+  box-shadow: var(--sombra-suave);
+}
+
+.btn-inicio:hover {
+  background: var(--verde-corporativo);
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-media);
+}
+
+/* Franja decorativa tipo "ola" bajo la barra superior
+   (hace eco del mantel/logo de la marca) */
+.ola-decorativa {
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--azul-corporativo) 0%, var(--verde-corporativo) 100%);
+}
+
+
+/* ============================================================
+   4. PANTALLA PRINCIPAL (index.html)
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 6% 80px;
+  overflow: hidden;
+}
+
+/* Fondo con "olas" suaves inspiradas en el logo de la marca.
+   Son formas SVG a color, con muy baja opacidad, puramente decorativas. */
+.hero__fondo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero__fondo svg {
+  position: absolute;
+  width: 140%;
+  max-width: 1400px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hero__fondo .ola-1 {
+  top: -10%;
+  opacity: 0.10;
+}
+
+.hero__fondo .ola-2 {
+  bottom: -18%;
+  opacity: 0.08;
+  transform: translateX(-50%) rotate(180deg);
+}
+
+.hero__logo {
+  width: 220px;
+  margin-bottom: 28px;
+  animation: apareceSuave 0.9s var(--transicion-suave) both;
+}
+
+.hero__titulo {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-bottom: 10px;
+  animation: apareceSuave 0.9s var(--transicion-suave) both;
+  animation-delay: 0.1s;
+}
+
+.hero__subtitulo {
+  color: var(--gris-texto);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  max-width: 480px;
+  margin-bottom: 56px;
+  animation: apareceSuave 0.9s var(--transicion-suave) both;
+  animation-delay: 0.2s;
+}
+
+/* Contenedor de las dos tarjetas grandes (Vendedor / Cliente) */
+.opciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
+  max-width: 780px;
+}
+
+.tarjeta-opcion {
+  position: relative;
+  flex: 1 1 300px;
+  max-width: 340px;
+  background: var(--blanco);
+  border-radius: var(--radio-grande);
+  padding: 48px 32px;
+  box-shadow: var(--sombra-media);
+  border: 1px solid var(--gris-borde);
+  transition: transform var(--transicion-suave), box-shadow var(--transicion-suave), border-color var(--transicion-suave);
+  animation: apareceSuave 0.9s var(--transicion-suave) both;
+}
+
+.tarjeta-opcion:nth-child(1) { animation-delay: 0.3s; }
+.tarjeta-opcion:nth-child(2) { animation-delay: 0.4s; }
+
+.tarjeta-opcion:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--sombra-hover);
+  border-color: transparent;
+}
+
+.tarjeta-opcion__icono {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--blanco);
+  background: linear-gradient(135deg, var(--azul-corporativo), var(--azul-oscuro));
+  transition: transform var(--transicion-suave);
+}
+
+/* La tarjeta de cliente usa el acento verde en su icono, para diferenciarlas */
+.tarjeta-opcion--cliente .tarjeta-opcion__icono {
+  background: linear-gradient(135deg, var(--verde-corporativo), var(--verde-oscuro));
+}
+
+.tarjeta-opcion:hover .tarjeta-opcion__icono {
+  transform: scale(1.1) rotate(-4deg);
+}
+
+.tarjeta-opcion__titulo {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.tarjeta-opcion__desc {
+  color: var(--gris-texto);
+  font-size: 0.95rem;
+}
+
+.tarjeta-opcion__flecha {
+  margin-top: 20px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--verde-corporativo);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap var(--transicion-suave);
+}
+
+.tarjeta-opcion:hover .tarjeta-opcion__flecha {
+  gap: 12px;
+}
+
+
+/* ============================================================
+   5. SECCIÓN DE TARJETAS DE MENÚ (vendedor.html / cliente.html)
+   ============================================================ */
+.contenido {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 6% 96px;
+}
+
+.contenido__encabezado {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 48px;
+  animation: apareceSuave 0.8s var(--transicion-suave) both;
+}
+
+.contenido__encabezado h1 {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  margin-bottom: 10px;
+}
+
+.contenido__encabezado p {
+  color: var(--gris-texto);
+}
+
+/* Grid responsivo de tarjetas */
+.grid-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 26px;
+}
+
+.tarjeta {
+  position: relative;
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: var(--radio-medio);
+  padding: 30px 26px;
+  box-shadow: var(--sombra-suave);
+  transition: transform var(--transicion-suave), box-shadow var(--transicion-suave), border-color var(--transicion-suave);
+  opacity: 0;
+  animation: apareceSuave 0.7s var(--transicion-suave) forwards;
+}
+
+.tarjeta:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--sombra-hover);
+  border-color: transparent;
+}
+
+/* Franja superior de color que aparece al pasar el mouse */
+.tarjeta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 26px;
+  right: 26px;
+  height: 3px;
+  border-radius: 0 0 4px 4px;
+  background: linear-gradient(90deg, var(--azul-corporativo), var(--verde-corporativo));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transicion-suave);
+}
+
+.tarjeta:hover::before {
+  transform: scaleX(1);
+}
+
+.tarjeta__icono {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radio-chico);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--azul-corporativo);
+  background: var(--gris-fondo);
+  margin-bottom: 18px;
+  transition: transform var(--transicion-suave), background var(--transicion-suave), color var(--transicion-suave);
+}
+
+.tarjeta:hover .tarjeta__icono {
+  transform: scale(1.12);
+  background: var(--verde-corporativo);
+  color: var(--blanco);
+}
+
+.tarjeta__titulo {
+  font-size: 1.08rem;
+  margin-bottom: 6px;
+}
+
+.tarjeta__desc {
+  font-size: 0.9rem;
+  color: var(--gris-texto);
+  margin-bottom: 16px;
+}
+
+.tarjeta__enlace {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--verde-corporativo);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tarjeta__enlace i {
+  transition: transform var(--transicion-suave);
+}
+
+.tarjeta:hover .tarjeta__enlace i {
+  transform: translateX(4px);
+}
+
+
+/* ============================================================
+   5b. SELECTOR RÁPIDO DE PORTAL (tabs "Vendedor | Cliente")
+   ------------------------------------------------------------
+   Aparece en el centro de la barra superior de vendedor.html y
+   cliente.html, para saltar de un portal a otro sin tener que
+   volver a la pantalla de Inicio.
+   ============================================================ */
+.navbar__tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--gris-fondo);
+  border-radius: 999px;
+  padding: 4px;
+}
+
+.navbar__tab {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--gris-texto);
+  transition: background var(--transicion-suave), color var(--transicion-suave);
+}
+
+.navbar__tab:hover {
+  color: var(--azul-corporativo);
+}
+
+/* La pestaña de la página en la que ya estás se marca en azul */
+.navbar__tab.activo,
+.navbar__tab.activo:hover {
+  background: var(--azul-corporativo);
+  color: var(--blanco);
+  box-shadow: var(--sombra-suave);
+}
+
+
+/* ============================================================
+   6. PIE DE PÁGINA (FOOTER)
+   ============================================================ */
+.footer {
+  text-align: center;
+  padding: 28px 6%;
+  border-top: 1px solid var(--gris-borde);
+  color: var(--gris-texto);
+  font-size: 0.85rem;
+}
+
+.footer strong {
+  color: var(--azul-corporativo);
+}
+
+
+/* ============================================================
+   7. ANIMACIONES
+   ============================================================ */
+@keyframes apareceSuave {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Clase que se agrega vía JavaScript cuando una tarjeta entra en pantalla
+   (ver js/script.js — sección "Animación al hacer scroll") */
+.en-vista {
+  opacity: 1 !important;
+}
+
+
+/* ============================================================
+   7b. PANTALLA DE ACCESO CON CONTRASEÑA (solo vendedor.html)
+   ------------------------------------------------------------
+   Mientras el <body> tenga la clase "bloqueado", se oculta todo
+   el contenido de la página y solo se ve esta tarjeta de acceso.
+   El JavaScript que la controla está en js/acceso-vendedor.js
+   👉 La contraseña se cambia en ese archivo, NO aquí.
+   ============================================================ */
+body.bloqueado > .navbar,
+body.bloqueado > .ola-decorativa,
+body.bloqueado > .contenido,
+body.bloqueado > .footer {
+  display: none;
+}
+
+.candado {
+  display: none; /* se activa solo cuando el body tiene la clase "bloqueado" */
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--gris-fondo);
+}
+
+body.bloqueado .candado {
+  display: flex;
+}
+
+.candado__caja {
+  width: 100%;
+  max-width: 380px;
+  background: var(--blanco);
+  border-radius: var(--radio-grande);
+  padding: 44px 36px;
+  text-align: center;
+  box-shadow: var(--sombra-media);
+  border: 1px solid var(--gris-borde);
+  animation: apareceSuave 0.6s var(--transicion-suave) both;
+}
+
+.candado__logo {
+  width: 120px;
+  margin: 0 auto 22px;
+}
+
+.candado__icono {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--blanco);
+  background: linear-gradient(135deg, var(--azul-corporativo), var(--azul-oscuro));
+}
+
+.candado__caja h2 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.candado__caja p {
+  color: var(--gris-texto);
+  font-size: 0.88rem;
+  margin-bottom: 24px;
+}
+
+.candado__form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.candado__input {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: var(--radio-chico);
+  border: 1px solid var(--gris-borde);
+  font-family: var(--fuente-texto);
+  font-size: 0.95rem;
+  text-align: center;
+  transition: border-color var(--transicion-suave), box-shadow var(--transicion-suave);
+}
+
+.candado__input:focus {
+  outline: none;
+  border-color: var(--azul-corporativo);
+  box-shadow: 0 0 0 4px rgba(11, 58, 116, 0.12);
+}
+
+.candado__boton {
+  padding: 13px 16px;
+  border-radius: var(--radio-chico);
+  background: var(--verde-corporativo);
+  color: var(--blanco);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background var(--transicion-suave), transform var(--transicion-suave);
+}
+
+.candado__boton:hover {
+  background: var(--verde-oscuro);
+  transform: translateY(-2px);
+}
+
+.candado__error {
+  margin-top: 14px;
+  color: #C0392B;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+
+/* ============================================================
+   8. RESPONSIVE — TABLET Y CELULAR
+   ============================================================ */
+@media (max-width: 900px) {
+  .contenido {
+    padding: 40px 6% 72px;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    padding: 14px 5%;
+  }
+
+  .navbar__nombre {
+    font-size: 0.92rem;
+  }
+
+  .btn-inicio span {
+    display: none; /* en celular solo se ve el ícono de "Inicio" */
+  }
+
+  .btn-inicio {
+    padding: 10px 14px;
+  }
+
+  /* En celular las pestañas Vendedor/Cliente muestran solo el ícono,
+     para que quepan junto al logo y al botón Inicio */
+  .navbar__tab span {
+    display: none;
+  }
+
+  .navbar__tab {
+    padding: 9px 12px;
+  }
+
+  .hero {
+    padding: 36px 6% 64px;
+  }
+
+  .hero__logo {
+    width: 170px;
+  }
+
+  .opciones {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tarjeta-opcion {
+    max-width: 100%;
+    padding: 36px 26px;
+  }
+
+  .grid-tarjetas {
+    grid-template-columns: 1fr;
+  }
+}

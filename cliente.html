@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Cliente | Plásticos Nacionales S.A.</title>
+  <meta name="description" content="Catálogos, certificaciones y material corporativo de Plásticos Nacionales S.A.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       BARRA SUPERIOR
+       ============================================================ -->
+  <header class="navbar">
+    <a href="index.html" class="navbar__marca">
+      <img src="img/logo.png" alt="Logo Plásticos Nacionales" class="navbar__logo">
+      <span class="navbar__nombre">Plásticos <span>Nacionales</span></span>
+    </a>
+
+    <!-- Selector rápido para saltar entre el portal de Vendedor y el de Cliente -->
+    <nav class="navbar__tabs" aria-label="Cambiar de portal">
+      <a href="vendedor.html" class="navbar__tab">
+        <i class="fa-solid fa-user-tie"></i><span> Vendedor</span>
+      </a>
+      <a href="cliente.html" class="navbar__tab activo">
+        <i class="fa-solid fa-users"></i><span> Cliente</span>
+      </a>
+    </nav>
+
+    <a href="index.html" class="btn-inicio">
+      <i class="fa-solid fa-house"></i>
+      <span>Inicio</span>
+    </a>
+  </header>
+  <div class="ola-decorativa" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       CONTENIDO: CATÁLOGOS DEL CLIENTE
+       ============================================================ -->
+  <main class="contenido">
+
+    <div class="contenido__encabezado">
+      <h1><i class="fa-solid fa-users" style="color:var(--verde-corporativo); margin-right:10px;"></i>Portal del Cliente</h1>
+      <p>Consulta nuestros catálogos, certificaciones y material corporativo en PDF.</p>
+    </div>
+
+    <!-- ============================================================
+         TARJETAS DE CATÁLOGOS
+         ------------------------------------------------------------
+         👉 CÓMO CAMBIAR LOS ARCHIVOS PDF:
+         Reemplaza el archivo correspondiente dentro de la carpeta
+         /pdf/ manteniendo el MISMO NOMBRE (por ejemplo catalogo1.pdf),
+         o bien cambia el valor de href="" por la nueva ruta.
+
+         Todas las tarjetas abren el PDF en una pestaña nueva
+         (target="_blank").
+         ============================================================ -->
+    <div class="grid-tarjetas">
+
+      <a href="pdf/catalogo1.pdf" target="_blank" rel="noopener noreferrer" class="tarjeta">
+        <div class="tarjeta__icono"><i class="fa-solid fa-industry"></i></div>
+        <h3 class="tarjeta__titulo">Catálogo Industrial</h3>
+        <p class="tarjeta__desc">Envases y soluciones plásticas para uso industrial.</p>
+        <span class="tarjeta__enlace">Ver PDF <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+      </a>
+
+      <a href="pdf/catalogo2.pdf" target="_blank" rel="noopener noreferrer" class="tarjeta">
+        <div class="tarjeta__icono"><i class="fa-solid fa-briefcase-medical"></i></div>
+        <h3 class="tarjeta__titulo">Catálogo Farmacéutico</h3>
+        <p class="tarjeta__desc">Envases certificados para la industria farmacéutica.</p>
+        <span class="tarjeta__enlace">Ver PDF <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+      </a>
+
+      <a href="pdf/catalogo3.pdf" target="_blank" rel="noopener noreferrer" class="tarjeta">
+        <div class="tarjeta__icono"><i class="fa-solid fa-pump-soap"></i></div>
+        <h3 class="tarjeta__titulo">Catálogo Cosmético</h3>
+        <p class="tarjeta__desc">Envases de alta calidad para productos de belleza y cuidado personal.</p>
+        <span class="tarjeta__enlace">Ver PDF <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+      </a>
+
+      <a href="pdf/catalogo4.pdf" target="_blank" rel="noopener noreferrer" class="tarjeta">
+        <div class="tarjeta__icono"><i class="fa-solid fa-bowl-food"></i></div>
+        <h3 class="tarjeta__titulo">Catálogo Alimenticio</h3>
+        <p class="tarjeta__desc">Envases aptos para contacto con alimentos.</p>
+        <span class="tarjeta__enlace">Ver PDF <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+      </a>
+
+      <a href="pdf/catalogo5.pdf" target="_blank" rel="noopener noreferrer" class="tarjeta">
+        <div class="tarjeta__icono"><i class="fa-solid fa-seedling"></i></div>
+        <h3 class="tarjeta__titulo">Catálogo Agroindustrial</h3>
+        <p class="tarjeta__desc">Soluciones plásticas para el sector agroindustrial.</p>
+        <span class="tarjeta__enlace">Ver PDF <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+      </a>
+
+      <a href="pdf/certificaciones.pdf" target="_blank" rel="noopener noreferrer" class="tarjeta">
+        <div class="tarjeta__icono"><i class="fa-solid fa-award"></i></div>
+        <h3 class="tarjeta__titulo">Certificaciones</h3>
+        <p class="tarjeta__desc">Certificados de calidad y cumplimiento normativo.</p>
+        <span class="tarjeta__enlace">Ver PDF <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+      </a>
+
+      <a href="pdf/brochure.pdf" target="_blank" rel="noopener noreferrer" class="tarjeta">
+        <div class="tarjeta__icono"><i class="fa-solid fa-book-open"></i></div>
+        <h3 class="tarjeta__titulo">Brochure Corporativo</h3>
+        <p class="tarjeta__desc">Conoce más sobre nuestra empresa y nuestros valores.</p>
+        <span class="tarjeta__enlace">Ver PDF <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+      </a>
+
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <strong>Plásticos Nacionales S.A.</strong> — Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

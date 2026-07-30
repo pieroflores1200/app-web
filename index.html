@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plásticos Nacionales S.A. | Portal Interno</title>
+  <meta name="description" content="Portal interno de Plásticos Nacionales S.A. Acceso para vendedores y clientes.">
+
+  <!-- ============================================================
+       FUENTES (Google Fonts)
+       👉 Si prefieres usar solo una fuente, elimina una de las dos
+       líneas de abajo y ajusta las variables --fuente-titulos /
+       --fuente-texto en css/estilos.css
+       ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- ============================================================
+       ICONOS (Font Awesome)
+       ============================================================ -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Hoja de estilos propia -->
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       PANTALLA PRINCIPAL
+       Solo dos opciones: VENDEDOR o CLIENTE.
+       ============================================================ -->
+  <main class="hero">
+
+    <!-- Fondo decorativo con "olas" en los colores de la marca.
+         Es puramente visual, no requiere edición. -->
+    <div class="hero__fondo" aria-hidden="true">
+      <svg class="ola-1" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#0B3A74" d="M0,150 C300,250 500,50 800,120 C950,155 1050,80 1200,110 L1200,0 L0,0 Z"/>
+      </svg>
+      <svg class="ola-2" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#2DA44E" d="M0,150 C300,250 500,50 800,120 C950,155 1050,80 1200,110 L1200,0 L0,0 Z"/>
+      </svg>
+    </div>
+
+    <!-- ============================================================
+         LOGO
+         👉 Para cambiar el logo, reemplaza el archivo img/logo.png
+         por el logo oficial (mismo nombre de archivo, o actualiza
+         la ruta "src" aquí abajo).
+         ============================================================ -->
+    <img src="img/logo.png" alt="Logo Plásticos Nacionales S.A." class="hero__logo">
+
+    <h1 class="hero__titulo">Plásticos Nacionales S.A.</h1>
+    <p class="hero__subtitulo">Selecciona tu perfil para continuar al portal correspondiente.</p>
+
+    <!-- ============================================================
+         DOS TARJETAS PRINCIPALES: VENDEDOR / CLIENTE
+         👉 Los enlaces "href" llevan a vendedor.html y cliente.html.
+         No es necesario modificarlos.
+         ============================================================ -->
+    <div class="opciones">
+
+      <a href="vendedor.html" class="tarjeta-opcion tarjeta-opcion--vendedor">
+        <div class="tarjeta-opcion__icono">
+          <i class="fa-solid fa-user-tie"></i>
+        </div>
+        <h2 class="tarjeta-opcion__titulo">Vendedor</h2>
+        <p class="tarjeta-opcion__desc">Registro de visitas, pedidos, reportes y más herramientas comerciales.</p>
+        <span class="tarjeta-opcion__flecha">Ingresar <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <a href="cliente.html" class="tarjeta-opcion tarjeta-opcion--cliente">
+        <div class="tarjeta-opcion__icono">
+          <i class="fa-solid fa-users"></i>
+        </div>
+        <h2 class="tarjeta-opcion__titulo">Cliente</h2>
+        <p class="tarjeta-opcion__desc">Catálogos de producto, certificaciones y material corporativo.</p>
+        <span class="tarjeta-opcion__flecha">Ingresar <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+    </div>
+
+  </main>
+
+  <!-- ============================================================
+       PIE DE PÁGINA
+       ============================================================ -->
+  <footer class="footer">
+    <p>&copy; <strong>Plásticos Nacionales S.A.</strong> — Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
